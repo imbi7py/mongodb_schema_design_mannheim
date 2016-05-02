@@ -1,0 +1,4 @@
+####### demo requirements.txt #######
+pymongo
+colorama
+
