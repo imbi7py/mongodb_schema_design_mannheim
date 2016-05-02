@@ -1,0 +1,1 @@
+# mongodb_schema_design_mannheim
