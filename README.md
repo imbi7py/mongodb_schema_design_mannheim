@@ -1,6 +1,6 @@
 # MongoDB Schema Design - Mannheim MUG
 
-This repository is the demo code from my May 3, 2016 presentation at MongoDB User Group in Mannheim, Germany.
+This repository is the demo code from my May 3, 2016 presentation at [MongoDB User Group](http://www.meetup.com/Mannheim-MongoDB-User-Group/events/228698842/) in Mannheim, Germany.
 
 The code here represents two things.
 
