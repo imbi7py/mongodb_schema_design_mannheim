@@ -199,7 +199,7 @@ def display_times_and_query_plans(db, run_with_indexes):
 
     print(colors.subdue_color + "done, total time: ", end='')
     print(colors.highlight_color + '{:,}'.format(total_time), end='')
-    print(colors.subdue_color + 'ms.')
+    print(colors.subdue_color + ' ms.')
 
 
 def print_explain_info(explain_object, run_with_indexes):
@@ -249,13 +249,26 @@ def print_explain_info(explain_object, run_with_indexes):
     return time_ms
 
 
+def show_data_size(db):
+    print(colors.bold_color + "Computing data set size...")
+    sys.stdout.flush()
+    print(colors.highlight_color + "{:,}".format(db.Book.count()),end='')
+    print(colors.subdue_color + ' books')
+    sys.stdout.flush()
+
+    review_count = 0
+    for b in db.Book.find({}, {'_id': 0, 'Ratings.Value': 1}):
+        review_count += len(b['Ratings'])
+    print(colors.highlight_color + "{:,}".format(review_count),end='')
+    print(colors.subdue_color + " reviews")
+    print()
+
+
 def run():
     client = pymongo.MongoClient()
     db = client.books
 
-    print(colors.highlight_color + "Data set size: {:,} books".format(db.Book.count()))
-    print()
-
+    show_data_size(db)
     remove_indexes(db)
     reset_profile_data(db)
     renable_profiling(db)
